@@ -59,6 +59,7 @@ function togglePaymentMethod($button, paymentId) {
         success: function (response) {
             response = JSON.parse(response);
             if (response.success) {
+                $clickedButton.closest('.payment-method').find('select[name^="MOLLIE_METHOD_ENABLED"] option[value="' + response.paymentStatus +'"]').prop('selected', true);
                 if (response.paymentStatus) {
                     $clickedButton.data('action', 'deactivate');
                     $clickedButton.find('i').html('check');
